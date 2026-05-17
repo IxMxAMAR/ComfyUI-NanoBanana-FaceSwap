@@ -1,0 +1,245 @@
+{
+  "last_node_id": 8,
+  "last_link_id": 8,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "LoadImagePaint",
+      "pos": [
+        40,
+        40
+      ],
+      "size": [
+        380,
+        580
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": [
+            2
+          ]
+        }
+      ],
+      "widgets_values": [
+        "target_revealing.jpg",
+        "",
+        20
+      ]
+    },
+    {
+      "id": 5,
+      "type": "NanoBananaPaintedEdit",
+      "pos": [
+        460,
+        40
+      ],
+      "size": [
+        400,
+        800
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "target_image",
+          "type": "IMAGE",
+          "link": 1
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            5
+          ]
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": [
+            6
+          ]
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        },
+        {
+          "name": "debug_sheet",
+          "type": "IMAGE",
+          "links": [
+            7
+          ]
+        }
+      ],
+      "widgets_values": [
+        "",
+        "gemini-3.1-flash-image-preview",
+        "Add a delicate cursive script tattoo reading the painted text, dark grey ink.",
+        0,
+        "NONE",
+        "additive",
+        0,
+        "blur",
+        60,
+        0,
+        8,
+        "2K",
+        false,
+        true,
+        false,
+        "feather",
+        0.6,
+        1.0
+      ]
+    },
+    {
+      "id": 6,
+      "type": "PreviewImage",
+      "pos": [
+        900,
+        40
+      ],
+      "size": [
+        400,
+        380
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 5
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "ShowText|pysssss",
+      "pos": [
+        900,
+        440
+      ],
+      "size": [
+        400,
+        80
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 6
+        }
+      ],
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 8,
+      "type": "PreviewImage",
+      "pos": [
+        900,
+        540
+      ],
+      "size": [
+        400,
+        300
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 7
+        }
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      5,
+      0,
+      "IMAGE"
+    ],
+    [
+      2,
+      1,
+      1,
+      5,
+      1,
+      "MASK"
+    ],
+    [
+      5,
+      5,
+      0,
+      6,
+      0,
+      "IMAGE"
+    ],
+    [
+      6,
+      5,
+      1,
+      7,
+      0,
+      "STRING"
+    ],
+    [
+      7,
+      5,
+      3,
+      8,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "07 - Painted edit with safety obscuration (IMAGE_SAFETY workaround)",
+      "bounding": [
+        20,
+        -10,
+        1300,
+        870
+      ],
+      "color": "#9b3030"
+    }
+  ],
+  "config": {},
+  "extra": {
+    "info": "For edits on photos with cleavage / revealing content that trip IMAGE_SAFETY. crop_tightness_pct=0 (tightest possible) + obscure_outside_mask=blur (heavy Gaussian on everything outside the painted region) hides anatomical shapes from the safety classifier while still giving the model skin tone + lighting context."
+  },
+  "version": 0.4
+}

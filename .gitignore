@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+build/
+dist/
+.eggs/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual envs
+venv/
+env/
+.venv/
+ENV/
+
+# Test / coverage artifacts
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.cache/
+*.cover
+.hypothesis/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Local secrets
+settings.json
+.env
+.env.local
+*.key
+
+# Model cache (downloaded at runtime, never committed)
+*.onnx
+*.task
+~/.cache/
+
+# OS
+desktop.ini

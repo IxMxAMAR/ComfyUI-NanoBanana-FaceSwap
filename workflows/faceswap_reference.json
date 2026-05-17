@@ -1,0 +1,503 @@
+{
+  "last_node_id": 12,
+  "last_link_id": 14,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [
+        40,
+        40
+      ],
+      "size": [
+        320,
+        320
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1,
+            7
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "widgets_values": [
+        "target.jpg",
+        "image"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "LoadImage",
+      "pos": [
+        40,
+        400
+      ],
+      "size": [
+        320,
+        320
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            2,
+            8
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "widgets_values": [
+        "identity_1.jpg",
+        "image"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "LoadImage",
+      "pos": [
+        40,
+        760
+      ],
+      "size": [
+        320,
+        320
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            3,
+            9
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "widgets_values": [
+        "identity_2.jpg",
+        "image"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "LoadImage",
+      "pos": [
+        40,
+        1120
+      ],
+      "size": [
+        320,
+        320
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            4,
+            10
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "widgets_values": [
+        "identity_3.jpg",
+        "image"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "NanoBananaWholeImageSwap",
+      "pos": [
+        400,
+        40
+      ],
+      "size": [
+        400,
+        520
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "target_image",
+          "type": "IMAGE",
+          "link": 1
+        },
+        {
+          "name": "identity_1",
+          "type": "IMAGE",
+          "link": 2
+        },
+        {
+          "name": "identity_2",
+          "type": "IMAGE",
+          "link": 3
+        },
+        {
+          "name": "identity_3",
+          "type": "IMAGE",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            5
+          ]
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        },
+        {
+          "name": "debug_sheet",
+          "type": "IMAGE",
+          "links": [
+            6
+          ]
+        }
+      ],
+      "widgets_values": [
+        "",
+        "gemini-3.1-flash-image-preview",
+        "head",
+        "separate_refs",
+        "",
+        "BLOCK_NONE",
+        0,
+        "target"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "PreviewImage",
+      "pos": [
+        840,
+        40
+      ],
+      "size": [
+        400,
+        260
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 5
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "PreviewImage",
+      "pos": [
+        840,
+        320
+      ],
+      "size": [
+        400,
+        260
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 6
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "NanoBananaCropSwap",
+      "pos": [
+        400,
+        600
+      ],
+      "size": [
+        400,
+        620
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "target_image",
+          "type": "IMAGE",
+          "link": 7
+        },
+        {
+          "name": "identity_1",
+          "type": "IMAGE",
+          "link": 8
+        },
+        {
+          "name": "identity_2",
+          "type": "IMAGE",
+          "link": 9
+        },
+        {
+          "name": "identity_3",
+          "type": "IMAGE",
+          "link": 10
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            11
+          ]
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        },
+        {
+          "name": "debug_sheet",
+          "type": "IMAGE",
+          "links": [
+            12
+          ]
+        }
+      ],
+      "widgets_values": [
+        "",
+        "gemini-3.1-flash-image-preview",
+        "head",
+        "separate_refs",
+        "",
+        "BLOCK_NONE",
+        0,
+        "target",
+        "auto",
+        1024,
+        true,
+        24
+      ]
+    },
+    {
+      "id": 9,
+      "type": "PreviewImage",
+      "pos": [
+        840,
+        600
+      ],
+      "size": [
+        400,
+        260
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 11
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "PreviewImage",
+      "pos": [
+        840,
+        880
+      ],
+      "size": [
+        400,
+        320
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 12
+        }
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      5,
+      0,
+      "IMAGE"
+    ],
+    [
+      2,
+      2,
+      0,
+      5,
+      1,
+      "IMAGE"
+    ],
+    [
+      3,
+      3,
+      0,
+      5,
+      2,
+      "IMAGE"
+    ],
+    [
+      4,
+      4,
+      0,
+      5,
+      3,
+      "IMAGE"
+    ],
+    [
+      5,
+      5,
+      0,
+      6,
+      0,
+      "IMAGE"
+    ],
+    [
+      6,
+      5,
+      3,
+      7,
+      0,
+      "IMAGE"
+    ],
+    [
+      7,
+      1,
+      0,
+      8,
+      0,
+      "IMAGE"
+    ],
+    [
+      8,
+      2,
+      0,
+      8,
+      1,
+      "IMAGE"
+    ],
+    [
+      9,
+      3,
+      0,
+      8,
+      2,
+      "IMAGE"
+    ],
+    [
+      10,
+      4,
+      0,
+      8,
+      3,
+      "IMAGE"
+    ],
+    [
+      11,
+      8,
+      0,
+      9,
+      0,
+      "IMAGE"
+    ],
+    [
+      12,
+      8,
+      3,
+      10,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Pathway A - Whole Image",
+      "bounding": [
+        20,
+        -10,
+        1240,
+        1470
+      ],
+      "color": "#3f789e"
+    },
+    {
+      "title": "Pathway B - Crop & Composite",
+      "bounding": [
+        20,
+        -10,
+        1240,
+        1470
+      ],
+      "color": "#a1309b"
+    }
+  ],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

@@ -1,0 +1,5 @@
+google-genai>=0.8.0
+Pillow
+numpy
+opencv-python>=4.6.0
+mediapipe>=0.10.13,<0.11
