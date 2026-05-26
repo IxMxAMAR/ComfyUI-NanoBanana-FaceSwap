@@ -50,3 +50,6 @@ settings.json
 
 # OS
 desktop.ini
+
+# Build artifacts
+*.zip
