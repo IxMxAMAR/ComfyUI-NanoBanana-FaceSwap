@@ -1,0 +1,802 @@
+{
+  "last_node_id": 10,
+  "last_link_id": 12,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [
+        50,
+        50
+      ],
+      "size": [
+        320,
+        108
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "recipe_id": "target",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 2,
+      "type": "LoadImage",
+      "pos": [
+        50,
+        188
+      ],
+      "size": [
+        320,
+        108
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            5,
+            6,
+            7,
+            8
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "recipe_id": "identity",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 3,
+      "type": "NanoBananaWholeImageSwap",
+      "pos": [
+        430,
+        50
+      ],
+      "size": [
+        320,
+        418
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "target_image",
+          "type": "IMAGE",
+          "link": 1
+        },
+        {
+          "name": "identity_1",
+          "type": "IMAGE",
+          "link": 5
+        },
+        {
+          "name": "identity_2",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "identity_3",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "identity_4",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "identity_5",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "identity_6",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            9
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "debug_sheet",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 3
+        }
+      ],
+      "properties": {
+        "recipe_id": "swap_whole",
+        "Node name for S&R": "NanoBananaWholeImageSwap"
+      },
+      "widgets_values": [
+        "",
+        "gemini-2.5-flash",
+        "head",
+        "auto",
+        "",
+        "block_only_high",
+        0,
+        "identity",
+        "2K",
+        false,
+        180000,
+        1024,
+        true
+      ]
+    },
+    {
+      "id": 4,
+      "type": "PreviewImage",
+      "pos": [
+        810,
+        50
+      ],
+      "size": [
+        320,
+        74
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 9
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "recipe_id": "prev_whole",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 5,
+      "type": "NanoBananaCropSwap",
+      "pos": [
+        430,
+        498
+      ],
+      "size": [
+        320,
+        638
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "target_image",
+          "type": "IMAGE",
+          "link": 2
+        },
+        {
+          "name": "identity_1",
+          "type": "IMAGE",
+          "link": 6
+        },
+        {
+          "name": "identity_2",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "identity_3",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "identity_4",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "identity_5",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "identity_6",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            10
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "debug_sheet",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 3
+        }
+      ],
+      "properties": {
+        "recipe_id": "swap_crop",
+        "Node name for S&R": "NanoBananaCropSwap"
+      },
+      "widgets_values": [
+        "",
+        "gemini-2.5-flash",
+        "head",
+        "separate_refs",
+        "",
+        "BLOCK_NONE",
+        0,
+        "identity",
+        "mediapipe",
+        512,
+        true,
+        12,
+        "2K",
+        true,
+        true,
+        true,
+        "poisson",
+        false,
+        0.6,
+        1.0,
+        false,
+        180000,
+        1024,
+        true
+      ]
+    },
+    {
+      "id": 6,
+      "type": "PreviewImage",
+      "pos": [
+        810,
+        154
+      ],
+      "size": [
+        320,
+        74
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 10
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "recipe_id": "prev_crop",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 7,
+      "type": "NanoBananaInpaintSwap",
+      "pos": [
+        430,
+        1166
+      ],
+      "size": [
+        320,
+        638
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "target_image",
+          "type": "IMAGE",
+          "link": 3
+        },
+        {
+          "name": "identity_1",
+          "type": "IMAGE",
+          "link": 7
+        },
+        {
+          "name": "identity_2",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "identity_3",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "identity_4",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "identity_5",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "identity_6",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            11
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "debug_sheet",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 3
+        }
+      ],
+      "properties": {
+        "recipe_id": "swap_inpaint",
+        "Node name for S&R": "NanoBananaInpaintSwap"
+      },
+      "widgets_values": [
+        "",
+        "gemini-2.5-flash",
+        "head",
+        "separate_refs",
+        "",
+        "BLOCK_NONE",
+        0,
+        "identity",
+        "mediapipe",
+        512,
+        8,
+        12,
+        "2K",
+        true,
+        true,
+        true,
+        "poisson",
+        false,
+        0.6,
+        1.0,
+        false,
+        180000,
+        1024,
+        true
+      ]
+    },
+    {
+      "id": 8,
+      "type": "PreviewImage",
+      "pos": [
+        810,
+        258
+      ],
+      "size": [
+        320,
+        74
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 11
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "recipe_id": "prev_inpaint",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 9,
+      "type": "NanoBananaUnbiasedFaceSwap",
+      "pos": [
+        430,
+        1834
+      ],
+      "size": [
+        320,
+        558
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "target_image",
+          "type": "IMAGE",
+          "link": 4
+        },
+        {
+          "name": "identity_1",
+          "type": "IMAGE",
+          "link": 8
+        },
+        {
+          "name": "identity_2",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "identity_3",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "identity_4",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "identity_5",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "identity_6",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            12
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "debug_sheet",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 3
+        }
+      ],
+      "properties": {
+        "recipe_id": "swap_unbiased",
+        "Node name for S&R": "NanoBananaUnbiasedFaceSwap"
+      },
+      "widgets_values": [
+        "",
+        "gemini-2.5-pro",
+        "head",
+        "",
+        0,
+        "identity",
+        "mediapipe",
+        8,
+        12,
+        "2K",
+        "low",
+        true,
+        0.6,
+        1.0,
+        "poisson",
+        false,
+        false,
+        180000,
+        1024,
+        true
+      ]
+    },
+    {
+      "id": 10,
+      "type": "PreviewImage",
+      "pos": [
+        810,
+        362
+      ],
+      "size": [
+        320,
+        74
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 12
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "recipe_id": "prev_unbiased",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      3,
+      0,
+      "IMAGE"
+    ],
+    [
+      2,
+      1,
+      0,
+      5,
+      0,
+      "IMAGE"
+    ],
+    [
+      3,
+      1,
+      0,
+      7,
+      0,
+      "IMAGE"
+    ],
+    [
+      4,
+      1,
+      0,
+      9,
+      0,
+      "IMAGE"
+    ],
+    [
+      5,
+      2,
+      0,
+      3,
+      1,
+      "IMAGE"
+    ],
+    [
+      6,
+      2,
+      0,
+      5,
+      1,
+      "IMAGE"
+    ],
+    [
+      7,
+      2,
+      0,
+      7,
+      1,
+      "IMAGE"
+    ],
+    [
+      8,
+      2,
+      0,
+      9,
+      1,
+      "IMAGE"
+    ],
+    [
+      9,
+      3,
+      0,
+      4,
+      0,
+      "IMAGE"
+    ],
+    [
+      10,
+      5,
+      0,
+      6,
+      0,
+      "IMAGE"
+    ],
+    [
+      11,
+      7,
+      0,
+      8,
+      0,
+      "IMAGE"
+    ],
+    [
+      12,
+      9,
+      0,
+      10,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Inputs",
+      "bounding": [
+        30,
+        0,
+        360,
+        316
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "WholeImage",
+      "bounding": [
+        410,
+        0,
+        740,
+        488
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Crop",
+      "bounding": [
+        410,
+        104,
+        740,
+        1052
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Inpaint",
+      "bounding": [
+        410,
+        208,
+        740,
+        1616
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Unbiased",
+      "bounding": [
+        410,
+        312,
+        740,
+        2100
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "description": "Run 4 swap methods in parallel (WholeImage, Crop, Inpaint, Unbiased) on the same target + identity pair and preview each output for quality comparison.",
+    "title": "NanoBanana FaceSwap \u2014 All Pathways Comparison",
+    "tier": 2,
+    "pack": "ComfyUI-NanoBanana-FaceSwap"
+  },
+  "version": 0.4
+}

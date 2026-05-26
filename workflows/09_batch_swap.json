@@ -1,0 +1,338 @@
+{
+  "last_node_id": 5,
+  "last_link_id": 4,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [
+        50,
+        50
+      ],
+      "size": [
+        320,
+        108
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "recipe_id": "target",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 2,
+      "type": "LoadImage",
+      "pos": [
+        50,
+        188
+      ],
+      "size": [
+        320,
+        108
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            2
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "recipe_id": "identity",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 3,
+      "type": "NanoBananaWholeImageSwap",
+      "pos": [
+        430,
+        50
+      ],
+      "size": [
+        320,
+        418
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "target_image",
+          "type": "IMAGE",
+          "link": 1
+        },
+        {
+          "name": "identity_1",
+          "type": "IMAGE",
+          "link": 2
+        },
+        {
+          "name": "identity_2",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "identity_3",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "identity_4",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "identity_5",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "identity_6",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            3
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": [
+            4
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "debug_sheet",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 3
+        }
+      ],
+      "properties": {
+        "recipe_id": "swap",
+        "Node name for S&R": "NanoBananaWholeImageSwap"
+      },
+      "widgets_values": [
+        "",
+        "gemini-2.5-pro",
+        "head",
+        "auto",
+        "",
+        "block_only_high",
+        42,
+        "target",
+        "2K",
+        false,
+        120000,
+        1024,
+        true
+      ]
+    },
+    {
+      "id": 4,
+      "type": "PreviewImage",
+      "pos": [
+        810,
+        50
+      ],
+      "size": [
+        320,
+        74
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 3
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "recipe_id": "preview",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 5,
+      "type": "ShowText",
+      "pos": [
+        810,
+        154
+      ],
+      "size": [
+        320,
+        94
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 4,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "recipe_id": "status",
+        "Node name for S&R": "ShowText"
+      },
+      "widgets_values": []
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      3,
+      0,
+      "IMAGE"
+    ],
+    [
+      2,
+      2,
+      0,
+      3,
+      1,
+      "IMAGE"
+    ],
+    [
+      3,
+      3,
+      0,
+      4,
+      0,
+      "IMAGE"
+    ],
+    [
+      4,
+      3,
+      1,
+      5,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Inputs",
+      "bounding": [
+        30,
+        0,
+        360,
+        316
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Swap",
+      "bounding": [
+        410,
+        0,
+        360,
+        488
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Output",
+      "bounding": [
+        790,
+        0,
+        360,
+        268
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "description": "Load a target image and an identity reference, then apply WholeImageSwap with batch_axis='target' to swap the face across all images in the batch.",
+    "title": "NanoBanana FaceSwap \u2014 Batch Target Swap",
+    "tier": 2,
+    "pack": "ComfyUI-NanoBanana-FaceSwap"
+  },
+  "version": 0.4
+}
