@@ -11,7 +11,7 @@
       ],
       "size": [
         320,
-        122
+        108
       ],
       "flags": {},
       "order": 1,
@@ -49,11 +49,11 @@
       "type": "LoadImage",
       "pos": [
         60,
-        232
+        218
       ],
       "size": [
         320,
-        122
+        108
       ],
       "flags": {},
       "order": 2,
@@ -95,7 +95,7 @@
       ],
       "size": [
         320,
-        534
+        576
       ],
       "flags": {},
       "order": 3,
@@ -171,11 +171,11 @@
       },
       "widgets_values": [
         "",
-        "gemini-2.5-flash",
+        "gemini-2.5-flash-image",
         "head",
-        "auto",
+        "auto_sheet",
         "",
-        "block_only_high",
+        "BLOCK_ONLY_HIGH",
         0,
         "randomize",
         "identity",
@@ -195,7 +195,7 @@
       ],
       "size": [
         320,
-        82
+        56
       ],
       "flags": {},
       "order": 4,
@@ -219,11 +219,11 @@
       "type": "NanoBananaCropSwap",
       "pos": [
         460,
-        644
+        686
       ],
       "size": [
         320,
-        776
+        840
       ],
       "flags": {},
       "order": 5,
@@ -299,7 +299,7 @@
       },
       "widgets_values": [
         "",
-        "gemini-2.5-flash",
+        "gemini-2.5-flash-image",
         "head",
         "separate_refs",
         "",
@@ -315,7 +315,7 @@
         true,
         true,
         true,
-        "poisson",
+        "laplacian",
         false,
         0.6,
         1.0,
@@ -330,11 +330,11 @@
       "type": "PreviewImage",
       "pos": [
         860,
-        192
+        166
       ],
       "size": [
         320,
-        82
+        56
       ],
       "flags": {},
       "order": 6,
@@ -358,11 +358,11 @@
       "type": "NanoBananaInpaintSwap",
       "pos": [
         460,
-        1470
+        1576
       ],
       "size": [
         320,
-        776
+        840
       ],
       "flags": {},
       "order": 7,
@@ -438,7 +438,7 @@
       },
       "widgets_values": [
         "",
-        "gemini-2.5-flash",
+        "gemini-2.5-flash-image",
         "head",
         "separate_refs",
         "",
@@ -454,7 +454,7 @@
         true,
         true,
         true,
-        "poisson",
+        "laplacian",
         false,
         0.6,
         1.0,
@@ -469,11 +469,11 @@
       "type": "PreviewImage",
       "pos": [
         860,
-        324
+        272
       ],
       "size": [
         320,
-        82
+        56
       ],
       "flags": {},
       "order": 8,
@@ -497,11 +497,11 @@
       "type": "NanoBananaUnbiasedFaceSwap",
       "pos": [
         460,
-        2296
+        2466
       ],
       "size": [
         320,
-        688
+        744
       ],
       "flags": {},
       "order": 9,
@@ -577,7 +577,7 @@
       },
       "widgets_values": [
         "",
-        "gemini-2.5-pro",
+        "gemini-3.1-flash-image-preview",
         "head",
         "",
         0,
@@ -587,11 +587,11 @@
         8,
         12,
         "2K",
-        "low",
+        "LOW",
         true,
         0.6,
         1.0,
-        "poisson",
+        "feather",
         false,
         false,
         180000,
@@ -604,11 +604,11 @@
       "type": "PreviewImage",
       "pos": [
         860,
-        456
+        378
       ],
       "size": [
         320,
-        82
+        56
       ],
       "flags": {},
       "order": 10,
@@ -733,7 +733,7 @@
         35,
         -1,
         370,
-        380
+        352
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -745,7 +745,7 @@
         435,
         -1,
         770,
-        620
+        662
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -755,9 +755,9 @@
       "title": "Crop",
       "bounding": [
         435,
-        131,
+        105,
         770,
-        1314
+        1446
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -767,9 +767,9 @@
       "title": "Inpaint",
       "bounding": [
         435,
-        263,
+        211,
         770,
-        2008
+        2230
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -779,9 +779,9 @@
       "title": "Unbiased",
       "bounding": [
         435,
-        395,
+        317,
         770,
-        2614
+        2918
       ],
       "color": "#3F789E",
       "font_size": 24,
