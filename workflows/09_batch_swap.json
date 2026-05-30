@@ -1,17 +1,17 @@
 {
-  "last_node_id": 5,
-  "last_link_id": 4,
+  "last_node_id": 4,
+  "last_link_id": 3,
   "nodes": [
     {
       "id": 1,
       "type": "LoadImage",
       "pos": [
-        50,
-        50
+        60,
+        60
       ],
       "size": [
         320,
-        108
+        122
       ],
       "flags": {},
       "order": 1,
@@ -45,12 +45,12 @@
       "id": 2,
       "type": "LoadImage",
       "pos": [
-        50,
-        188
+        60,
+        232
       ],
       "size": [
         320,
-        108
+        122
       ],
       "flags": {},
       "order": 2,
@@ -84,12 +84,12 @@
       "id": 3,
       "type": "NanoBananaWholeImageSwap",
       "pos": [
-        430,
-        50
+        460,
+        60
       ],
       "size": [
         320,
-        418
+        534
       ],
       "flags": {},
       "order": 3,
@@ -143,9 +143,7 @@
         {
           "name": "status",
           "type": "STRING",
-          "links": [
-            4
-          ],
+          "links": [],
           "slot_index": 1
         },
         {
@@ -173,6 +171,7 @@
         "",
         "block_only_high",
         42,
+        "randomize",
         "target",
         "2K",
         false,
@@ -185,12 +184,12 @@
       "id": 4,
       "type": "PreviewImage",
       "pos": [
-        810,
-        50
+        860,
+        60
       ],
       "size": [
         320,
-        74
+        82
       ],
       "flags": {},
       "order": 4,
@@ -206,44 +205,6 @@
       "properties": {
         "recipe_id": "preview",
         "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": []
-    },
-    {
-      "id": 5,
-      "type": "ShowText",
-      "pos": [
-        810,
-        154
-      ],
-      "size": [
-        320,
-        94
-      ],
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "text",
-          "type": "STRING",
-          "link": 4,
-          "widget": {
-            "name": "text"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "text",
-          "type": "STRING",
-          "links": [],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "recipe_id": "status",
-        "Node name for S&R": "ShowText"
       },
       "widgets_values": []
     }
@@ -272,24 +233,16 @@
       4,
       0,
       "IMAGE"
-    ],
-    [
-      4,
-      3,
-      1,
-      5,
-      0,
-      "STRING"
     ]
   ],
   "groups": [
     {
       "title": "Inputs",
       "bounding": [
-        30,
-        0,
-        360,
-        316
+        35,
+        -1,
+        370,
+        380
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -298,10 +251,10 @@
     {
       "title": "Swap",
       "bounding": [
-        410,
-        0,
-        360,
-        488
+        435,
+        -1,
+        370,
+        620
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -310,10 +263,10 @@
     {
       "title": "Output",
       "bounding": [
-        790,
-        0,
-        360,
-        268
+        835,
+        -1,
+        370,
+        322
       ],
       "color": "#3F789E",
       "font_size": 24,

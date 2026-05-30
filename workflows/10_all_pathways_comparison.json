@@ -6,12 +6,12 @@
       "id": 1,
       "type": "LoadImage",
       "pos": [
-        50,
-        50
+        60,
+        60
       ],
       "size": [
         320,
-        108
+        122
       ],
       "flags": {},
       "order": 1,
@@ -48,12 +48,12 @@
       "id": 2,
       "type": "LoadImage",
       "pos": [
-        50,
-        188
+        60,
+        232
       ],
       "size": [
         320,
-        108
+        122
       ],
       "flags": {},
       "order": 2,
@@ -90,12 +90,12 @@
       "id": 3,
       "type": "NanoBananaWholeImageSwap",
       "pos": [
-        430,
-        50
+        460,
+        60
       ],
       "size": [
         320,
-        418
+        534
       ],
       "flags": {},
       "order": 3,
@@ -177,6 +177,7 @@
         "",
         "block_only_high",
         0,
+        "randomize",
         "identity",
         "2K",
         false,
@@ -189,12 +190,12 @@
       "id": 4,
       "type": "PreviewImage",
       "pos": [
-        810,
-        50
+        860,
+        60
       ],
       "size": [
         320,
-        74
+        82
       ],
       "flags": {},
       "order": 4,
@@ -217,12 +218,12 @@
       "id": 5,
       "type": "NanoBananaCropSwap",
       "pos": [
-        430,
-        498
+        460,
+        644
       ],
       "size": [
         320,
-        638
+        776
       ],
       "flags": {},
       "order": 5,
@@ -304,6 +305,7 @@
         "",
         "BLOCK_NONE",
         0,
+        "randomize",
         "identity",
         "mediapipe",
         512,
@@ -327,12 +329,12 @@
       "id": 6,
       "type": "PreviewImage",
       "pos": [
-        810,
-        154
+        860,
+        192
       ],
       "size": [
         320,
-        74
+        82
       ],
       "flags": {},
       "order": 6,
@@ -355,12 +357,12 @@
       "id": 7,
       "type": "NanoBananaInpaintSwap",
       "pos": [
-        430,
-        1166
+        460,
+        1470
       ],
       "size": [
         320,
-        638
+        776
       ],
       "flags": {},
       "order": 7,
@@ -442,6 +444,7 @@
         "",
         "BLOCK_NONE",
         0,
+        "randomize",
         "identity",
         "mediapipe",
         512,
@@ -465,12 +468,12 @@
       "id": 8,
       "type": "PreviewImage",
       "pos": [
-        810,
-        258
+        860,
+        324
       ],
       "size": [
         320,
-        74
+        82
       ],
       "flags": {},
       "order": 8,
@@ -493,12 +496,12 @@
       "id": 9,
       "type": "NanoBananaUnbiasedFaceSwap",
       "pos": [
-        430,
-        1834
+        460,
+        2296
       ],
       "size": [
         320,
-        558
+        688
       ],
       "flags": {},
       "order": 9,
@@ -578,6 +581,7 @@
         "head",
         "",
         0,
+        "randomize",
         "identity",
         "mediapipe",
         8,
@@ -599,12 +603,12 @@
       "id": 10,
       "type": "PreviewImage",
       "pos": [
-        810,
-        362
+        860,
+        456
       ],
       "size": [
         320,
-        74
+        82
       ],
       "flags": {},
       "order": 10,
@@ -726,10 +730,10 @@
     {
       "title": "Inputs",
       "bounding": [
-        30,
-        0,
-        360,
-        316
+        35,
+        -1,
+        370,
+        380
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -738,10 +742,10 @@
     {
       "title": "WholeImage",
       "bounding": [
-        410,
-        0,
-        740,
-        488
+        435,
+        -1,
+        770,
+        620
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -750,10 +754,10 @@
     {
       "title": "Crop",
       "bounding": [
-        410,
-        104,
-        740,
-        1052
+        435,
+        131,
+        770,
+        1314
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -762,10 +766,10 @@
     {
       "title": "Inpaint",
       "bounding": [
-        410,
-        208,
-        740,
-        1616
+        435,
+        263,
+        770,
+        2008
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -774,10 +778,10 @@
     {
       "title": "Unbiased",
       "bounding": [
-        410,
-        312,
-        740,
-        2100
+        435,
+        395,
+        770,
+        2614
       ],
       "color": "#3F789E",
       "font_size": 24,
