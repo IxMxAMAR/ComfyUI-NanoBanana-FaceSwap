@@ -44,7 +44,7 @@ def _normalize_box(coords_4: List[float], img_w: int, img_h: int) -> BBox:
 
 
 def detect_head_bbox(img: Image.Image, detector: str = "auto",
-                     api_key: Optional[str] = None) -> Optional[BBox]:
+                     api_key: Optional[str] = None, network=None) -> Optional[BBox]:
     img = img.convert("RGB")
     if detector == "auto":
         cascade = ["mediapipe", "opencv_yunet", "gemini_bbox"]
@@ -62,7 +62,7 @@ def detect_head_bbox(img: Image.Image, detector: str = "auto",
                     logger.warning("[faceswap] gemini_bbox detector requires api_key; skipping")
                     box = None
                 else:
-                    box = _detect_gemini_bbox(img, api_key=api_key)
+                    box = _detect_gemini_bbox(img, api_key=api_key, network=network)
             else:
                 logger.warning("[faceswap] unknown detector %r", name)
                 return None
@@ -206,13 +206,17 @@ def _detect_yunet(img: Image.Image) -> Optional[BBox]:
 
 
 def _detect_gemini_bbox(img: Image.Image, api_key: str,
-                        model: str = "gemini-flash-latest") -> Optional[BBox]:
+                        model: str = "gemini-flash-latest",
+                        network=None) -> Optional[BBox]:
     from google import genai
     from google.genai import types
     buf = io.BytesIO()
     img.convert("RGB").save(buf, format="JPEG", quality=92)
 
-    client = genai.Client(api_key=api_key, http_options={"timeout": 10_000})
+    # Reuse the backend's proxy-aware client builder so the bbox call goes
+    # through the same network route as the swap that follows it.
+    from .backend import _get_client
+    client = _get_client(api_key, timeout_ms=10_000, network=network)
     config = types.GenerateContentConfig(
         response_mime_type="application/json",
         response_schema=list[float],

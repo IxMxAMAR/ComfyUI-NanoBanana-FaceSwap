@@ -80,6 +80,7 @@ class NanoBananaInpaintSwap:
                 "timeout_ms": ("INT", {"default": 180000, "min": 5000, "max": 600000, "step": 1000}),
                 "ref_cap_px": ("INT", {"default": 1024, "min": 0, "max": 4096, "step": 64}),
                 "auto_relax_on_refused": ("BOOLEAN", {"default": False}),
+                            "network": ("NB_NETWORK", {"tooltip": "Optional. Wire a NanoBanana - Network Route node here to route this swap's API call through that proxy (e.g. US egress)."}),
             },
         }
 
@@ -102,12 +103,13 @@ class NanoBananaInpaintSwap:
             identity_2=None, identity_3=None, identity_4=None,
             identity_5=None, identity_6=None,
             dry_run=False, timeout_ms=180000, ref_cap_px=1024,
-            auto_relax_on_refused=False):
+            auto_relax_on_refused=False, network=None):
         key = resolve_api_key(api_key)
         backend = FaceSwapBackend(
             api_key=key, timeout_ms=timeout_ms, dry_run=dry_run,
             ref_cap_px=ref_cap_px,
             auto_relax_on_refused=auto_relax_on_refused,
+            network=network,
         )
 
         target_pils = tensor_utils.image_tensor_to_pil_list(target_image)

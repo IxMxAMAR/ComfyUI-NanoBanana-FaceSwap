@@ -72,6 +72,7 @@ class NanoBananaWholeImageSwap:
                     "tooltip": "If the model refuses, retry once with no "
                                "safety_settings (model defaults). Some "
                                "BLOCK_NONE refusals relax under defaults."}),
+                            "network": ("NB_NETWORK", {"tooltip": "Optional. Wire a NanoBanana - Network Route node here to route this swap's API call through that proxy (e.g. US egress)."}),
             },
         }
 
@@ -90,12 +91,13 @@ class NanoBananaWholeImageSwap:
             identity_2=None, identity_3=None, identity_4=None,
             identity_5=None, identity_6=None,
             dry_run=False, timeout_ms=180000, ref_cap_px=1024,
-            auto_relax_on_refused=False):
+            auto_relax_on_refused=False, network=None):
         key = resolve_api_key(api_key)
         backend = FaceSwapBackend(
             api_key=key, timeout_ms=timeout_ms, dry_run=dry_run,
             ref_cap_px=ref_cap_px,
             auto_relax_on_refused=auto_relax_on_refused,
+            network=network,
         )
 
         identity_tensors = [t for t in (identity_1, identity_2, identity_3, identity_4,

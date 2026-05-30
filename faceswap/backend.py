@@ -17,15 +17,46 @@ logger = logging.getLogger(__name__)
 _client_cache = {}
 
 
-def _get_client(api_key: str, timeout_ms: int = 180_000):
-    # Cache by (api_key, timeout_ms) so a per-call timeout override yields a
-    # distinct client rather than silently reusing the prior one. Real-world
-    # cache size remains tiny (most users have 1 key + 1 timeout pair).
-    cache_key = (api_key, int(timeout_ms))
+def _proxy_url_from_network(network) -> str:
+    """Extract a proxy URL from an NB_NETWORK config dict (output of the
+    NanoBanana_NetworkRoute node). Returns "" when the call should go
+    direct (the default)."""
+    if not network or not isinstance(network, dict):
+        return ""
+    if not network.get("enabled", True):
+        return ""
+    return (network.get("proxy_url") or "").strip()
+
+
+def _get_client(api_key: str, timeout_ms: int = 180_000, network=None):
+    """Build (or fetch from cache) a google.genai Client.
+
+    When `network` is supplied (a dict from NanoBanana_NetworkRoute) with a
+    proxy_url set, every API call from the returned Client tunnels through
+    that proxy — letting you make the Gemini face-swap calls appear to
+    originate from a specific region (e.g. the US).
+    """
+    proxy_url = _proxy_url_from_network(network)
+    # Cache by (api_key, timeout_ms, proxy_url) so routed and direct clients
+    # coexist without fighting for the same cache slot.
+    cache_key = (api_key, int(timeout_ms), proxy_url)
     if cache_key not in _client_cache:
         from google import genai
+        http_options = {"timeout": int(timeout_ms)}
+        if proxy_url:
+            try:
+                import httpx
+                mounts = {"all://": httpx.HTTPTransport(proxy=proxy_url)}
+                http_options["client_args"] = {"mounts": mounts}
+                http_options["async_client_args"] = {"mounts": mounts}
+            except Exception as e:
+                import os
+                print(f"[NanoBanana FaceSwap Network] httpx mounts unavailable "
+                      f"({e}); using HTTPS_PROXY env fallback")
+                os.environ["HTTP_PROXY"] = proxy_url
+                os.environ["HTTPS_PROXY"] = proxy_url
         _client_cache[cache_key] = genai.Client(
-            api_key=api_key, http_options={"timeout": int(timeout_ms)}
+            api_key=api_key, http_options=http_options
         )
     return _client_cache[cache_key]
 
@@ -119,7 +150,7 @@ class FaceSwapBackend:
 
     def __init__(self, api_key: str, *, timeout_ms: int = 180_000,
                  dry_run: bool = False, ref_cap_px: int = DEFAULT_REF_CAP_PX,
-                 auto_relax_on_refused: bool = False):
+                 auto_relax_on_refused: bool = False, network=None):
         self.api_key = api_key
         self.timeout_ms = int(timeout_ms)
         self.dry_run = bool(dry_run)
@@ -129,6 +160,10 @@ class FaceSwapBackend:
         # SDK default). Empirically helps with edge cases where BLOCK_NONE
         # still tripped a hard refusal. Off by default — opt-in.
         self.auto_relax_on_refused = bool(auto_relax_on_refused)
+        # NB_NETWORK config (from NanoBanana_NetworkRoute node). When set,
+        # every Gemini API call this backend makes (including the bbox
+        # detector at detect.py) tunnels through the configured proxy.
+        self.network = network
 
     def _cap_refs(self, refs):
         if self.ref_cap_px <= 0:
@@ -228,7 +263,7 @@ class FaceSwapBackend:
 
         # Downscale refs once up front (saves bandwidth + boosts identity).
         refs = self._cap_refs(refs)
-        bbox = detect.detect_head_bbox(target, detector=detector, api_key=self.api_key)
+        bbox = detect.detect_head_bbox(target, detector=detector, api_key=self.api_key, network=self.network)
         if bbox is None:
             reason = "no_face_detected"
             ph = soft_fail.render_error(target, reason=reason)
@@ -443,7 +478,7 @@ class FaceSwapBackend:
                           debug_sheet=debug_sheet_override or self._side_by_side(target, out_img))
 
     def _call_generate(self, model, contents, config):
-        client = _get_client(self.api_key, timeout_ms=self.timeout_ms)
+        client = _get_client(self.api_key, timeout_ms=self.timeout_ms, network=self.network)
         return client.models.generate_content(model=model, contents=contents, config=config)
 
     def _call_with_optional_relax(self, model, contents, config,
@@ -627,7 +662,7 @@ class FaceSwapBackend:
         from google.genai import types
 
         refs = self._cap_refs(refs)
-        bbox = detect.detect_head_bbox(target, detector=detector, api_key=self.api_key)
+        bbox = detect.detect_head_bbox(target, detector=detector, api_key=self.api_key, network=self.network)
         if bbox is None:
             ph = soft_fail.render_error(target, reason="no_face_detected")
             return SwapResult(image=ph, status="ERROR:no_face_detected",
@@ -824,7 +859,7 @@ class FaceSwapBackend:
         from google.genai import types
 
         refs = self._cap_refs(refs)
-        bbox = detect.detect_head_bbox(target, detector=detector, api_key=self.api_key)
+        bbox = detect.detect_head_bbox(target, detector=detector, api_key=self.api_key, network=self.network)
         if bbox is None:
             ph = soft_fail.render_error(target, reason="no_face_detected")
             return SwapResult(image=ph, status="ERROR:no_face_detected",

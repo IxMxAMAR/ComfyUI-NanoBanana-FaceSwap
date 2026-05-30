@@ -1,13 +1,14 @@
 [project]
 name = "comfyui-nanobanana-faceswap"
 description = "Face/head replacement for ComfyUI via Google Nano Banana 2 (Gemini image editing). Five swap pathways (whole, crop, mask-inpaint, unbiased, painted-edit), mediapipe + YuNet + Gemini bbox detector cascade, LAB / grain / sharpness / Laplacian compositing, identity-ref obfuscation for celebrity-classifier evasion."
-version = "0.2.2"
+version = "0.3.0"
 license = { text = "MIT" }
 dependencies = [
     "google-genai>=0.8.0",
     "Pillow",
     "numpy",
     "opencv-python>=4.6.0",
+    "httpx[socks]>=0.27.0",
 ]
 
 [project.urls]
