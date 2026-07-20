@@ -9,7 +9,7 @@ Load any of these in ComfyUI (drag the JSON file onto the canvas, or use **Load*
 | 01 | `01_face_swap_whole_image.json` | A — Whole image | Default starting point. Lets Gemini see the full target and refine it. Best for same-character refinement style work (Face Detailer mode). |
 | 02 | `02_face_swap_crop_composite.json` | B — Crop + composite | Target has a face you want swapped to a different identity, integration stages on. |
 | 03 | `03_face_swap_mask_inpaint.json` | C — Mask inpaint (red obscure) | Whole-image refuses due to scene content (clothing, background). Paints the face red before sending so Gemini sees no original face. |
-| 04 | `04_face_swap_unbiased_celeb.json` | D — Unbiased | Celebrity / public-figure refs. Uses `try_face_match.py` request shape (system_instruction + JSON prompt + no safety_settings). **Requires US/permissive-region VPN if your billing/IP is in EU.** |
+| 04 | `04_face_swap_unbiased_celeb.json` | D — Unbiased | Celebrity / public-figure refs. Uses a hardened request shape (system_instruction + JSON prompt + no safety_settings). **Requires US/permissive-region VPN if your billing/IP is in EU.** |
 | 05 | `05_celeb_with_obfuscation.json` | D + Obfuscator | Even with VPN, Gemini still refuses the specific celeb. Routes each reference through `IdentityRefObfuscator` (blur + perspective warp + LAB shift) to drop the recognition classifier's confidence below threshold. |
 | 06 | `06_tattoo_additive_edit.json` | E — Painted edit, `edit_mode=additive` | Tattoo / logo / sticker / object insertion. Paint the region directly in the **LoadImagePaint** canvas, supply a text prompt. `edit_mode=additive` force-disables LAB color match + sharpness match + Laplacian (which all desaturate / blur additive content). |
 | 07 | `07_painted_edit_safety_obscure.json` | E — Painted edit + `obscure_outside_mask=blur` | Edit near revealing content (cleavage, etc.) that trips `IMAGE_SAFETY`. Combines tight crop (`crop_tightness_pct=0`) with heavy blur on the non-painted area of the crop so the safety classifier has no anatomical shapes to fire on. |
@@ -75,4 +75,4 @@ If a workflow refuses with `REFUSED:BlockedReason.OTHER` on a real-person refere
 All workflow files have an empty `api_key` field. You can:
 1. Paste your key directly into the `api_key` field on each swap node, or
 2. Set the `GEMINI_API_KEY` environment variable (preferred — survives workflow JSON edits), or
-3. Drop the key into `c:/ComfyUI/RD/FashionGUI Premium/settings.json` under `nanobanana_key` (the global tool fallback path).
+3. Put the key in a `settings.json` at the pack root under `nanobanana_key`, `gemini_api_key`, or `api_key`.

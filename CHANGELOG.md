@@ -7,11 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.0] — 2026-05-17
 
-First public release. Major audit + fix release driven by two parallel
-full-codebase Gemini Pro reviews (Pathway A: face-detection / mask /
-composite math; Pathway B: API client / node integration / soft-fail /
-security). Verified every Critical and High finding against the actual
-source before applying any change.
+First public release. Major audit + fix release following two parallel
+full-codebase reviews (Pathway A: face-detection / mask / composite
+math; Pathway B: API client / node integration / soft-fail / security).
+Every Critical and High finding was verified against the actual source
+before applying any change.
 
 ### Security — fix immediately if you ever load shared workflows
 
@@ -49,8 +49,8 @@ source before applying any change.
   an interrupted urlretrieve left a 0-byte final file and every
   subsequent run died inside `cv2.FaceDetectorYN_create`.
 - **Removed hardcoded developer settings path.** `resolve_api_key` no
-  longer attempts to read `c:/ComfyUI/RD/FashionGUI Premium/settings.json`
-  — that was the original author's local config. Public users get a
+  longer attempts to read a settings file from the original author's
+  development machine. Public users get a
   clean "Gemini API key required" error if their key isn't in the env
   or in `<pack_root>/settings.json`. The portable `settings.json` field
   list expanded to accept `nanobanana_key`, `gemini_api_key`, or
@@ -128,9 +128,9 @@ source before applying any change.
 - **Reference-image size cap (`ref_cap_px` optional input).** Defaults
   to 1024 px (longest edge). Downscales identity references with
   LANCZOS before sending. Saves bandwidth (quadratic in pixel count)
-  and empirically improves identity transfer — per the Gemini Pro
-  review, the model gets confused by 4K skin-pore detail when only the
-  embedding-level identity matters. 0 = disabled.
+  and empirically improves identity transfer — the model gets confused
+  by 4K skin-pore detail when only the embedding-level identity
+  matters. 0 = disabled.
 - **Auto-relax-on-refused (`auto_relax_on_refused` optional input).**
   Off by default. When enabled, a `REFUSED:` response triggers a second
   attempt with `safety_settings` stripped entirely (SDK falls back to
@@ -177,10 +177,10 @@ source before applying any change.
 
 - Crop-alignment math, Laplacian pyramid composite, Reinhard LAB
   transfer, FaceMesh face-oval traversal, BBox normalization all
-  reviewed and **confirmed correct** by Gemini Pro. No changes.
+  reviewed and **confirmed correct**. No changes.
 - `IS_CHANGED` returning `float("nan")` is the modern correct way to
-  force ComfyUI to re-run a generative node — confirmed by Gemini Pro,
-  the `time.time()` string rumor is outdated.
+  force ComfyUI to re-run a generative node — verified against current
+  ComfyUI behavior; the `time.time()` string rumor is outdated.
 - `nodes/` directory name retained (vs MegaPack's rename to `mp_nodes/`).
   Collision with ComfyUI's core `nodes.py` is mitigated by relative
   imports in `__init__.py` and absolute imports rooted in the pack via

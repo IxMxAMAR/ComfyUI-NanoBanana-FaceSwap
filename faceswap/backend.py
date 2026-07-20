@@ -219,9 +219,9 @@ class FaceSwapBackend:
 
         from . import sheet as _sheet
         # Cap reference sizes before any further processing. Cheaper API
-        # payloads and empirically *better* identity transfer (per the
-        # Gemini Pro review 2026-05-17) — the model gets distracted by 4K
-        # skin pore detail when only the embedding-level identity matters.
+        # payloads and empirically *better* identity transfer — the model
+        # gets distracted by 4K skin pore detail when only the
+        # embedding-level identity matters.
         refs = self._cap_refs(refs)
         prompt = prompts.build(scope=scope, custom_hint=custom_hint,
                                pathway="whole", n_refs=len(refs))
@@ -578,9 +578,9 @@ class FaceSwapBackend:
             return types.GenerateContentConfig(**kwargs)
 
     # ---- Unbiased mask-inpaint swap (Pathway D) ----
-    # Mirrors C:/ComfyUI/RD/gemini_makeup/try_face_match.py's exact request
-    # shape, which empirically passes Gemini's celebrity classifier where the
-    # standard Pathway C request shape is refused. Differences vs swap_inpaint:
+    # Uses a request shape that empirically passes Gemini's celebrity
+    # classifier where the standard Pathway C request shape is refused.
+    # Differences vs swap_inpaint:
     #   - system_instruction with a "biometric compositing engine" persona
     #   - JSON-structured user prompt (task / identity / lighting / output)
     #   - response_modalities=["IMAGE"] only (not ["IMAGE","TEXT"])

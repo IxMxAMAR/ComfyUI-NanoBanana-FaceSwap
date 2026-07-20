@@ -1,7 +1,7 @@
 """NanoBanana Unbiased Face Swap - Pathway D node.
 
-Mirrors the exact API request shape of the FashionGUI try_face_match.py
-pipeline that empirically passes Gemini's celebrity classifier:
+Uses an API request shape that empirically passes Gemini's celebrity
+classifier:
 - system_instruction with "biometric compositing engine" persona
 - JSON-structured user prompt
 - response_modalities=["IMAGE"] only (no TEXT escape hatch)

@@ -86,9 +86,9 @@ Iteration is sequential (Nano Banana 2 has no batched-inference endpoint via `ge
 ## Installation
 
 ```bash
-git clone https://github.com/IxMxAMAR/ComfyUI-NanoBanana-FaceSwap "C:/ComfyUI/custom_nodes/ComfyUI-NanoBanana-FaceSwap"
-cd "C:/ComfyUI/custom_nodes/ComfyUI-NanoBanana-FaceSwap"
-"C:/ComfyUI/venv/Scripts/python" -m pip install -r requirements.txt
+cd ComfyUI/custom_nodes
+git clone https://github.com/IxMxAMAR/ComfyUI-NanoBanana-FaceSwap
+python -m pip install -r ComfyUI-NanoBanana-FaceSwap/requirements.txt
 ```
 
 Set `GEMINI_API_KEY` in your environment, or paste your key into the `api_key` input of either swap node.

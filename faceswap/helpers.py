@@ -50,7 +50,7 @@ def build_batch_iter(batch_axis: str, target_pils: List[Image.Image],
 # Max longest-edge for an identity reference before we downscale before send.
 # Empirically: identity transfer doesn't improve with 4K-pore refs over 1024px
 # refs, while bandwidth + base64 cost scales quadratically. 1024 is a sweet
-# spot per the Gemini Pro review 2026-05-17.
+# spot.
 DEFAULT_REF_CAP_PX = 1024
 
 

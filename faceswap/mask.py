@@ -1,10 +1,9 @@
 """Face polygon mask generation + obscuration for Pathway C (mask-inpaint).
 
-Lifted from C:/ComfyUI/RD/gemini_makeup/try_face_match.py (the proven pipeline
-that survives celebrity-recognition refusals). Uses mediapipe FaceMesh to get a
-precise face-skin polygon, fills internal holes via convex hull, dilates
-outward, and paints the masked region solid red so Gemini sees no original
-facial features to recognize.
+Based on a proven pipeline that survives celebrity-recognition refusals.
+Uses mediapipe FaceMesh to get a precise face-skin polygon, fills internal
+holes via convex hull, dilates outward, and paints the masked region solid
+red so Gemini sees no original facial features to recognize.
 """
 
 from __future__ import annotations
@@ -66,8 +65,7 @@ FACE_LANDMARKER_URL = (
 )
 FACE_LANDMARKER_FILENAME = "face_landmarker.task"
 _FACE_LANDMARKER_LOCAL_FALLBACKS = (
-    # Reuse the existing copy from the gemini_makeup project if present
-    r"C:/ComfyUI/RD/gemini_makeup/face_landmarker.task",
+    # Reuse an existing local copy if present
     r"C:/ComfyUI/models/mediapipe/face_landmarker.task",
 )
 _CACHE_DIR = os.path.join(os.path.expanduser("~"), ".cache", "nanobanana_faceswap")
@@ -247,8 +245,8 @@ def feather(mask: Image.Image, px: int) -> Image.Image:
 def paint_red(image: Image.Image, mask: Image.Image,
               color: Tuple[int, int, int] = (255, 0, 0)) -> Image.Image:
     """Paint `image` with solid `color` everywhere `mask` is non-zero. Returns
-    an RGB image. The default red (#FF0000) is what survives moderation best
-    per the FashionGUI face-match results.
+    an RGB image. The default red (#FF0000) is what empirically survives
+    moderation best.
     """
     base = np.asarray(image.convert("RGB"), dtype=np.uint8).copy()
     m = np.asarray(mask.convert("L"), dtype=np.float32) / 255.0
