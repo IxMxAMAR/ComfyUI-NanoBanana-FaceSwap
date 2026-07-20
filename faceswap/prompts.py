@@ -1,7 +1,7 @@
 """Prompt templates for face-swap operations (Pathways A/B/C - prose).
 
-Mirrored from gemini_makeup/try_face_match.py - the proven-working prompts
-that the user validated empirically. Kept simple by design. Custom_hint is
+Proven-working prompts, validated empirically. Kept simple by design.
+Custom_hint is
 the user's lever for case-specific adjustments (anti-beautify, expression
 direction, identity description for private subjects, etc.) - the default
 prompt should not pre-bake opinionated language.

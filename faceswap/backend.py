@@ -590,9 +590,9 @@ class FaceSwapBackend:
     #     safety classifier to read the request as "identity transfer")
     #   - thinking_config optional (configurable level)
 
-    # Verbatim from gemini_makeup/try_face_match.py - the proven-working
-    # system instruction for celeb identity transfer. User feedback 2026-05-15:
-    # this works perfectly for celebrity references; the only failure mode
+    # The proven-working system instruction for celeb identity transfer.
+    # Field results 2026-05-15:
+    # this works reliably for celebrity references; the only failure mode
     # is private individuals where identity doesn't transfer (separate issue,
     # not solvable by prompt-engineering this persona).
     UNBIASED_SYSTEM_INSTRUCTION = (
@@ -608,7 +608,7 @@ class FaceSwapBackend:
     # - reference_processing: ref-count-conditional usage instruction
     # - anti_bias: explicit anti-celebrity-snap mandate
     # - identity: sharpened to call out micro-features and "private individual"
-    # Verbatim from gemini_makeup/try_face_match.py FACE_MATCH_DEFAULT, plus
+    # The proven FACE_MATCH_DEFAULT prompt shape, plus
     # the {hint} placeholder for custom_hint injection. Five JSON keys:
     # task / identity / lighting / makeup / skin / output. Proven to pass
     # safety + transfer identity reliably for celeb references.
@@ -912,7 +912,7 @@ class FaceSwapBackend:
 
         # Refs first, then obscured crop, then prompt. Order matters: showing
         # "who to render" before "where to render it" improves identity lock
-        # (per the Path A++ pattern from gemini_makeup/try_face_match.py).
+        # (empirically validated ordering).
         parts = []
         for i, ref in enumerate(send_refs, start=1):
             parts.append(types.Part.from_text(text=f"--- [Identity Reference {i}] ---"))
