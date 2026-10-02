@@ -195,7 +195,7 @@
       ],
       "size": [
         320,
-        56
+        436
       ],
       "flags": {},
       "order": 4,
@@ -219,7 +219,7 @@
       "type": "NanoBananaCropSwap",
       "pos": [
         460,
-        686
+        964
       ],
       "size": [
         320,
@@ -330,11 +330,11 @@
       "type": "PreviewImage",
       "pos": [
         860,
-        166
+        824
       ],
       "size": [
         320,
-        56
+        436
       ],
       "flags": {},
       "order": 6,
@@ -358,7 +358,7 @@
       "type": "NanoBananaInpaintSwap",
       "pos": [
         460,
-        1576
+        2536
       ],
       "size": [
         320,
@@ -469,11 +469,11 @@
       "type": "PreviewImage",
       "pos": [
         860,
-        272
+        1992
       ],
       "size": [
         320,
-        56
+        436
       ],
       "flags": {},
       "order": 8,
@@ -497,7 +497,7 @@
       "type": "NanoBananaUnbiasedFaceSwap",
       "pos": [
         460,
-        2466
+        4512
       ],
       "size": [
         320,
@@ -604,11 +604,11 @@
       "type": "PreviewImage",
       "pos": [
         860,
-        378
+        3564
       ],
       "size": [
         320,
-        56
+        436
       ],
       "flags": {},
       "order": 10,
@@ -731,9 +731,9 @@
       "title": "Inputs",
       "bounding": [
         35,
-        -1,
+        -9,
         370,
-        352
+        360
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -743,9 +743,9 @@
       "title": "WholeImage",
       "bounding": [
         435,
-        -1,
+        -9,
         770,
-        662
+        670
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -755,9 +755,9 @@
       "title": "Crop",
       "bounding": [
         435,
-        105,
+        755,
         770,
-        1446
+        1074
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -767,9 +767,9 @@
       "title": "Inpaint",
       "bounding": [
         435,
-        211,
+        1923,
         770,
-        2230
+        1478
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -779,9 +779,9 @@
       "title": "Unbiased",
       "bounding": [
         435,
-        317,
+        3495,
         770,
-        2918
+        1786
       ],
       "color": "#3F789E",
       "font_size": 24,

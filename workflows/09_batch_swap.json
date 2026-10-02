@@ -191,7 +191,7 @@
       ],
       "size": [
         320,
-        56
+        436
       ],
       "flags": {},
       "order": 4,
@@ -215,11 +215,11 @@
       "type": "ShowText|pysssss",
       "pos": [
         860,
-        166
+        546
       ],
       "size": [
         320,
-        88
+        188
       ],
       "flags": {},
       "order": 5,
@@ -290,9 +290,9 @@
       "title": "Inputs",
       "bounding": [
         35,
-        -1,
+        -9,
         370,
-        352
+        360
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -302,9 +302,9 @@
       "title": "Swap",
       "bounding": [
         435,
-        -1,
+        -9,
         370,
-        662
+        670
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -314,9 +314,9 @@
       "title": "Output",
       "bounding": [
         835,
-        -1,
+        -9,
         370,
-        280
+        768
       ],
       "color": "#3F789E",
       "font_size": 24,
