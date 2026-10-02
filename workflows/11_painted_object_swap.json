@@ -54,7 +54,7 @@
       ],
       "size": [
         320,
-        812
+        832
       ],
       "flags": {},
       "order": 2,
@@ -99,6 +99,11 @@
           "name": "identity_6",
           "type": "IMAGE",
           "link": null
+        },
+        {
+          "name": "network",
+          "type": "NB_NETWORK",
+          "link": null
         }
       ],
       "outputs": [
@@ -137,7 +142,7 @@
       },
       "widgets_values": [
         "",
-        "gemini-3.1-flash-image-preview",
+        "gemini-3.1-flash-image",
         "Add an intricate floral tattoo design in the painted area, black ink style, realistic skin texture, seamlessly blended",
         0,
         "randomize",
@@ -283,7 +288,7 @@
         435,
         -9,
         370,
-        906
+        926
       ],
       "color": "#3F789E",
       "font_size": 24,

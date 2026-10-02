@@ -202,7 +202,7 @@
       ],
       "widgets_values": [
         "",
-        "gemini-3.1-flash-image-preview",
+        "gemini-3.1-flash-image",
         "head",
         "separate_refs",
         "",
@@ -319,7 +319,7 @@
       ],
       "widgets_values": [
         "",
-        "gemini-3.1-flash-image-preview",
+        "gemini-3.1-flash-image",
         "head",
         "separate_refs",
         "",

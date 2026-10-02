@@ -95,7 +95,7 @@
       ],
       "size": [
         320,
-        576
+        596
       ],
       "flags": {},
       "order": 3,
@@ -135,6 +135,11 @@
           "name": "identity_6",
           "type": "IMAGE",
           "link": null
+        },
+        {
+          "name": "network",
+          "type": "NB_NETWORK",
+          "link": null
         }
       ],
       "outputs": [
@@ -171,7 +176,7 @@
       },
       "widgets_values": [
         "",
-        "gemini-2.5-flash-image",
+        "gemini-3.1-flash-image",
         "head",
         "auto_sheet",
         "",
@@ -219,11 +224,11 @@
       "type": "NanoBananaCropSwap",
       "pos": [
         460,
-        964
+        1004
       ],
       "size": [
         320,
-        840
+        860
       ],
       "flags": {},
       "order": 5,
@@ -263,6 +268,11 @@
           "name": "identity_6",
           "type": "IMAGE",
           "link": null
+        },
+        {
+          "name": "network",
+          "type": "NB_NETWORK",
+          "link": null
         }
       ],
       "outputs": [
@@ -299,7 +309,7 @@
       },
       "widgets_values": [
         "",
-        "gemini-2.5-flash-image",
+        "gemini-3.1-flash-image",
         "head",
         "separate_refs",
         "",
@@ -330,7 +340,7 @@
       "type": "PreviewImage",
       "pos": [
         860,
-        824
+        844
       ],
       "size": [
         320,
@@ -358,11 +368,11 @@
       "type": "NanoBananaInpaintSwap",
       "pos": [
         460,
-        2536
+        2636
       ],
       "size": [
         320,
-        840
+        860
       ],
       "flags": {},
       "order": 7,
@@ -402,6 +412,11 @@
           "name": "identity_6",
           "type": "IMAGE",
           "link": null
+        },
+        {
+          "name": "network",
+          "type": "NB_NETWORK",
+          "link": null
         }
       ],
       "outputs": [
@@ -438,7 +453,7 @@
       },
       "widgets_values": [
         "",
-        "gemini-2.5-flash-image",
+        "gemini-3.1-flash-image",
         "head",
         "separate_refs",
         "",
@@ -469,7 +484,7 @@
       "type": "PreviewImage",
       "pos": [
         860,
-        1992
+        2052
       ],
       "size": [
         320,
@@ -497,11 +512,11 @@
       "type": "NanoBananaUnbiasedFaceSwap",
       "pos": [
         460,
-        4512
+        4692
       ],
       "size": [
         320,
-        744
+        764
       ],
       "flags": {},
       "order": 9,
@@ -541,6 +556,11 @@
           "name": "identity_6",
           "type": "IMAGE",
           "link": null
+        },
+        {
+          "name": "network",
+          "type": "NB_NETWORK",
+          "link": null
         }
       ],
       "outputs": [
@@ -577,7 +597,7 @@
       },
       "widgets_values": [
         "",
-        "gemini-3.1-flash-image-preview",
+        "gemini-3.1-flash-image",
         "head",
         "",
         0,
@@ -604,7 +624,7 @@
       "type": "PreviewImage",
       "pos": [
         860,
-        3564
+        3684
       ],
       "size": [
         320,
@@ -745,7 +765,7 @@
         435,
         -9,
         770,
-        670
+        690
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -755,9 +775,9 @@
       "title": "Crop",
       "bounding": [
         435,
-        755,
+        775,
         770,
-        1074
+        1114
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -767,9 +787,9 @@
       "title": "Inpaint",
       "bounding": [
         435,
-        1923,
+        1983,
         770,
-        1478
+        1538
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -779,9 +799,9 @@
       "title": "Unbiased",
       "bounding": [
         435,
-        3495,
+        3615,
         770,
-        1786
+        1866
       ],
       "color": "#3F789E",
       "font_size": 24,
