@@ -21,7 +21,7 @@ def test_node_returns_correct_shape_and_calls_swap_crop():
                       mask=Image.new("L", (64, 64), 200),
                       debug_sheet=Image.new("RGB", (512, 512), (0, 0, 0)))
     with patch("faceswap.backend.FaceSwapBackend.swap_crop", return_value=fake) as sc:
-        out = n.run(api_key="FAKE_KEY", model="gemini-3.1-flash-image-preview",
+        out = n.run(api_key="FAKE_KEY", model="gemini-3.1-flash-image",
                     target_image=_img_tensor(), identity_1=_img_tensor(color=(1, 0, 0)),
                     identity_2=None, identity_3=None, identity_4=None,
                     identity_5=None, identity_6=None,

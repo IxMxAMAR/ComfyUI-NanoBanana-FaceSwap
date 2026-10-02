@@ -5,6 +5,39 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] — 2026-10-02
+
+### Changed
+
+- **Model list moved to the generally available Gemini image models.**
+  The `model` dropdown on all five swap nodes now offers
+  `gemini-3.1-flash-image` (new default), `gemini-3-pro-image` and
+  `gemini-3.1-flash-lite-image`. `gemini-3.1-flash-image-preview` and
+  `gemini-3-pro-image-preview` were shut down on 2026-06-25, and
+  `gemini-2.5-flash-image` is shut down on 2026-10-02; all three are removed.
+  Saved workflows that still hold a removed ID need the model re-selected.
+- **Gemini bbox detector no longer sends `temperature`.** Google deprecated
+  the sampling parameters (`temperature`, `top_p`, `top_k`) for Gemini 3
+  models.
+- **Cost suffix follows the model and `image_size`**, using the current
+  standard-tier per-image prices.
+
+### Added
+
+- **`image_size` option `512`** on all five swap nodes (supported by
+  `gemini-3.1-flash-image`).
+- **`gemini-3.1-flash-lite-image`**, the low-latency, low-cost Gemini image
+  model. It renders 1K only, so any other `image_size` is sent as `1K`.
+  `gemini-3-pro-image` has no 512 output, so `512` is sent as `1K` there.
+
+## [0.3.0] — 2026-05-31
+
+### Added
+
+- Optional `network` input (NanoBanana Network Route) on all five swap nodes,
+  tunnelling the Gemini calls, including the bbox detector call, through the
+  configured proxy.
+
 ## [0.2.0] — 2026-05-17
 
 First public release. Major audit + fix release following two parallel

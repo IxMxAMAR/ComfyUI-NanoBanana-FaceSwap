@@ -25,7 +25,7 @@ def test_node_returns_correct_tuple_shape():
         debug_sheet=Image.new("RGB", (32, 16), (0, 0, 0)),
     )
     with patch("faceswap.backend.FaceSwapBackend.swap_whole", return_value=fake_result):
-        out = n.run(api_key="FAKE_KEY_FOR_TEST", model="gemini-3.1-flash-image-preview",
+        out = n.run(api_key="FAKE_KEY_FOR_TEST", model="gemini-3.1-flash-image",
                     target_image=target, identity_1=ident,
                     identity_2=None, identity_3=None, identity_4=None,
                     identity_5=None, identity_6=None,

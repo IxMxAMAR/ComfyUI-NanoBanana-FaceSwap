@@ -103,7 +103,7 @@ def test_node_rejects_batch_size_greater_than_one():
     big = torch.zeros((2, 32, 32, 3), dtype=torch.float32)
     mask = torch.zeros((1, 32, 32), dtype=torch.float32)
     with pytest.raises(ValueError, match="batch_size"):
-        n.run(api_key="FAKE", model="gemini-3.1-flash-image-preview",
+        n.run(api_key="FAKE", model="gemini-3.1-flash-image",
               target_image=big, mask=mask, edit_prompt="x",
               seed=0, thinking_level="NONE", edit_mode="blend",
               crop_tightness_pct=100,
@@ -127,7 +127,7 @@ def test_node_resizes_mask_if_different_size():
                       mask=Image.new("L", (64, 64), 128),
                       debug_sheet=Image.new("RGB", (256, 256), (0, 0, 0)))
     with patch("faceswap.backend.FaceSwapBackend.swap_painted_edit", return_value=fake):
-        out = n.run(api_key="FAKE", model="gemini-3.1-flash-image-preview",
+        out = n.run(api_key="FAKE", model="gemini-3.1-flash-image",
                     target_image=target_t, mask=mask_t, edit_prompt="x",
                     seed=0, thinking_level="NONE", edit_mode="blend",
                     crop_tightness_pct=100,

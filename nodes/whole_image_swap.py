@@ -17,15 +17,15 @@ from faceswap.node_utils import resolve_api_key, stack_masks
 
 
 IMAGE_MODELS = [
-    "gemini-3.1-flash-image-preview",
-    "gemini-3-pro-image-preview",
-    "gemini-2.5-flash-image",
+    "gemini-3.1-flash-image",
+    "gemini-3-pro-image",
+    "gemini-3.1-flash-lite-image",
 ]
 SCOPES = ["face", "head", "head+styling"]
 GRID_MODES = ["separate_refs", "auto_sheet"]
 BATCH_AXES = ["target", "identity"]
 SAFETY_LEVELS = ["BLOCK_NONE", "BLOCK_ONLY_HIGH", "BLOCK_MEDIUM_AND_ABOVE", "BLOCK_LOW_AND_ABOVE"]
-IMAGE_SIZES = ["1K", "2K", "4K"]
+IMAGE_SIZES = ["512", "1K", "2K", "4K"]
 
 
 class NanoBananaWholeImageSwap:
@@ -129,7 +129,8 @@ class NanoBananaWholeImageSwap:
         status = ";".join(statuses) if len(statuses) > 1 else statuses[0]
         # Append a cost-estimate suffix unless this is a dry run.
         if not dry_run:
-            status = status + _h.format_cost_suffix(model, n_calls=iter_count)
+            status = status + _h.format_cost_suffix(model, n_calls=iter_count,
+                                                  image_size=image_size)
         return (image_t, status, mask_t, debug_t)
 
 

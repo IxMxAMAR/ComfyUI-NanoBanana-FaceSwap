@@ -22,11 +22,11 @@ from faceswap.node_utils import resolve_api_key
 
 
 IMAGE_MODELS = [
-    "gemini-3.1-flash-image-preview",
-    "gemini-3-pro-image-preview",
-    "gemini-2.5-flash-image",
+    "gemini-3.1-flash-image",
+    "gemini-3-pro-image",
+    "gemini-3.1-flash-lite-image",
 ]
-IMAGE_SIZES = ["1K", "2K", "4K"]
+IMAGE_SIZES = ["512", "1K", "2K", "4K"]
 THINKING_LEVELS = ["NONE", "LOW", "MEDIUM", "HIGH"]
 COMPOSITE_METHODS = ["laplacian", "feather"]
 OBSCURE_MODES = ["off", "blur", "mosaic", "neutral"]

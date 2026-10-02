@@ -129,6 +129,23 @@ def _pil_to_part_bytes(pil: Image.Image) -> bytes:
     return buf.getvalue()
 
 
+# Output sizes the API accepts per model; models not listed take every size.
+_MODEL_IMAGE_SIZES = {
+    "gemini-3.1-flash-lite-image": ("1K",),
+    "gemini-3-pro-image": ("1K", "2K", "4K"),
+}
+
+
+def _supported_image_size(model: str, image_size: str) -> str:
+    """Fall back to 1K when the model can't render the requested size."""
+    allowed = _MODEL_IMAGE_SIZES.get(model)
+    if allowed and image_size not in allowed:
+        logger.info("[faceswap] %s does not support image_size %s; using 1K",
+                    model, image_size)
+        return "1K"
+    return image_size
+
+
 def _diff_mask(a: Image.Image, b: Image.Image, threshold: int = 18,
                blur_radius: int = 4) -> Image.Image:
     if a.size != b.size:
@@ -217,6 +234,7 @@ class FaceSwapBackend:
         if not refs:
             raise ValueError("at least one identity reference is required")
 
+        image_size = _supported_image_size(model, image_size)
         from . import sheet as _sheet
         # Cap reference sizes before any further processing. Cheaper API
         # payloads and empirically *better* identity transfer — the model
@@ -259,6 +277,7 @@ class FaceSwapBackend:
                   grain_strength: float = 1.0) -> SwapResult:
         if not refs:
             raise ValueError("at least one identity reference is required")
+        image_size = _supported_image_size(model, image_size)
         from . import detect, crop as crop_mod, composite, sheet as _sheet
 
         # Downscale refs once up front (saves bandwidth + boosts identity).
@@ -658,6 +677,7 @@ class FaceSwapBackend:
         if not refs:
             raise ValueError("at least one identity reference is required")
         from . import detect, crop as crop_mod, mask as _mask
+        image_size = _supported_image_size(model, image_size)
         from . import aspect as _aspect, integrate as _integ
         from google.genai import types
 
@@ -855,6 +875,7 @@ class FaceSwapBackend:
         if not refs:
             raise ValueError("at least one identity reference is required")
         from . import detect, crop as crop_mod, sheet as _sheet, mask as _mask
+        image_size = _supported_image_size(model, image_size)
         from . import aspect as _aspect
         from google.genai import types
 
@@ -1113,6 +1134,7 @@ class FaceSwapBackend:
         Gemini with an edit prompt + optional refs, composite the result
         back inside the painted mask. Same Unbiased request shape.
         """
+        image_size = _supported_image_size(model, image_size)
         import cv2
         from . import crop as crop_mod, aspect as _aspect, integrate as _integ
         from google.genai import types

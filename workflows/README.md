@@ -20,7 +20,7 @@ Load any of these in ComfyUI (drag the JSON file onto the canvas, or use **Load*
 ## Per-workflow notes
 
 ### 01 — Whole Image Swap
-Simplest possible workflow. Set the model to Nano Banana Pro (`gemini-3-pro-image-preview`) if the Flash output is too smoothed. `image_size=2K` is the default; bump to `4K` if you want max resolution.
+Simplest possible workflow. Set the model to Nano Banana Pro (`gemini-3-pro-image`) if the Flash output is too smoothed. `image_size=2K` is the default; bump to `4K` if you want max resolution.
 
 ### 02 — Crop + Composite
 The integrate stack defaults are `color_match=True, grain_match=True, sharpness_match=True, composite_method=laplacian, lab_strength=0.6, grain_strength=1.0`. For cross-identity work (different person on a different body), leave `match_directional_lighting=False`. For same-character refinement (refining a face you've already roughly placed) flip it to True.
@@ -59,7 +59,7 @@ Compose 2–6 reference angles into a single labeled grid via `IdentitySheetComp
 
 | Knob | Default | When to change |
 |---|---|---|
-| `model` | `gemini-3.1-flash-image-preview` | Switch to `gemini-3-pro-image-preview` (Nano Banana Pro) for higher quality at higher cost; sometimes different safety behavior. |
+| `model` | `gemini-3.1-flash-image` | Switch to `gemini-3-pro-image` (Nano Banana Pro) for higher quality at higher cost; sometimes different safety behavior. |
 | `image_size` | `2K` | `4K` for max detail at higher cost; `1K` for fast iteration. |
 | `seed` | 0 (random) | Set non-zero to reproduce a specific result. |
 | `safety_threshold` (A/B/C) | `BLOCK_NONE` | Server-side safety enforcement may ignore this; doesn't bypass identity-recognition blocks. |

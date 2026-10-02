@@ -262,7 +262,7 @@ def test_cap_reference_size_disabled_when_max_edge_zero():
 
 
 def test_format_cost_suffix_nonempty_for_known_model():
-    s = _h.format_cost_suffix("gemini-3.1-flash-image-preview", n_calls=2)
+    s = _h.format_cost_suffix("gemini-3.1-flash-image", n_calls=2)
     assert s.startswith(" | ~$")
     assert "0." in s
 

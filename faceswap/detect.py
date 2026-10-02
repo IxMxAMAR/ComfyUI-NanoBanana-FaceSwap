@@ -220,7 +220,6 @@ def _detect_gemini_bbox(img: Image.Image, api_key: str,
     config = types.GenerateContentConfig(
         response_mime_type="application/json",
         response_schema=list[float],
-        temperature=0.0,
     )
     parts = [
         types.Part.from_bytes(data=buf.getvalue(), mime_type="image/jpeg"),

@@ -23,14 +23,14 @@ from faceswap.node_utils import resolve_api_key, stack_masks
 
 
 IMAGE_MODELS = [
-    "gemini-3.1-flash-image-preview",
-    "gemini-3-pro-image-preview",
-    "gemini-2.5-flash-image",
+    "gemini-3.1-flash-image",
+    "gemini-3-pro-image",
+    "gemini-3.1-flash-lite-image",
 ]
 SCOPES = ["face", "head", "head+styling"]
 BATCH_AXES = ["target", "identity"]
 DETECTORS = ["auto", "mediapipe", "opencv_yunet", "gemini_bbox"]
-IMAGE_SIZES = ["1K", "2K", "4K"]
+IMAGE_SIZES = ["512", "1K", "2K", "4K"]
 THINKING_LEVELS = ["NONE", "LOW", "MEDIUM", "HIGH"]
 COMPOSITE_METHODS = ["feather", "laplacian"]
 
@@ -152,7 +152,8 @@ class NanoBananaUnbiasedFaceSwap:
         debug_t = tensor_utils.pil_to_image_tensor(debug_imgs)
         status = ";".join(statuses) if len(statuses) > 1 else statuses[0]
         if not dry_run:
-            status = status + _h.format_cost_suffix(model, n_calls=iter_count)
+            status = status + _h.format_cost_suffix(model, n_calls=iter_count,
+                                                  image_size=image_size)
         return (image_t, status, mask_t, debug_t)
 
 

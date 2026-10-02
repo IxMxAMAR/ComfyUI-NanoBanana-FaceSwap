@@ -1,8 +1,8 @@
 # ComfyUI-NanoBanana-FaceSwap
 
-Face/head replacement for ComfyUI via Google's Nano Banana 2 (`gemini-3.1-flash-image-preview`) and Nano Banana Pro (`gemini-3-pro-image-preview`).
+Face/head replacement for ComfyUI via Google's Nano Banana 2 (`gemini-3.1-flash-image`), Nano Banana Pro (`gemini-3-pro-image`) and Nano Banana 2 Lite (`gemini-3.1-flash-lite-image`).
 
-Two pathways are shipped so you can route around safety refusals on innocuous targets:
+Five swap pathways are shipped so you can route around safety refusals. The two basic ones:
 
 | Pathway | When to use |
 |---|---|
@@ -17,10 +17,23 @@ Honest note: cropping reduces refusals caused by background/scene content. It ca
 |---|---|
 | **Nano Banana - Face Swap (Whole Image)** | Pathway A. Inputs: target + up to 6 identity refs + scope (face/head/head+styling). |
 | **Nano Banana - Face Swap (Crop & Composite)** | Pathway B. Adds detector cascade, crop_size, histogram_match, feather_px. |
+| **Nano Banana - Face Swap (Mask Inpaint)** | Pathway C. Paints the detected face polygon red, sends it with the refs, and composites the filled region back. |
+| **Nano Banana - Unbiased Face Swap** | Pathway D. Mask-inpaint with a JSON-structured request shape and optional `thinking_level`. |
+| **Nano Banana - Painted Edit** | Pathway E. Edits only the region you painted, with an edit prompt and optional refs. |
+| **Load Image (Paint Mask)** | Loads an image and lets you paint the mask in the node; feeds Painted Edit. |
+| **Identity Ref Obfuscator** | Helper. Perturbs identity references before they are sent. |
 | **Identity Sheet Composer** | Helper. Composes up to 6 refs into a single labeled grid image (`auto`, `2x2`, `3x2`, etc.). |
 | **Face Swap Prompt Builder** | Helper. Preview the exact prompt the swap nodes will send. |
 
 All nodes appear in the ComfyUI category `NanoBanana FaceSwap`.
+
+## Models and image size
+
+| Model | `image_size` | Notes |
+|---|---|---|
+| `gemini-3.1-flash-image` (default) | `512`, `1K`, `2K`, `4K` | Nano Banana 2. |
+| `gemini-3-pro-image` | `1K`, `2K`, `4K` | Nano Banana Pro. `512` is sent as `1K`. |
+| `gemini-3.1-flash-lite-image` | `1K` | Nano Banana 2 Lite, low latency and low cost. Other sizes are sent as `1K`. |
 
 ## Scope semantics
 

@@ -78,25 +78,24 @@ def cap_reference_list(refs: Iterable[Image.Image], max_edge: int = DEFAULT_REF_
 
 
 # ----- Cost estimation -----
-# Indicative USD per output-image as of 2026-05. Pricing actually depends on
-# input/output token count for image-edit models too, but the dominant cost
-# component for these workflows is the generated image. Numbers are
-# best-effort and meant for UX (informational), not billing.
+# Indicative USD per output image (standard tier, 2026-10). Actual billing
+# also counts input tokens, which we don't measure; informational only.
 _COST_PER_OUTPUT_USD = {
-    # Flash image-preview: input+output ~ free tier today; informational only
-    "gemini-3.1-flash-image-preview": 0.039,    # nominal
-    "gemini-3-pro-image-preview":     0.12,     # higher quality, higher tier
-    "gemini-2.5-flash-image":         0.039,
+    "gemini-3.1-flash-image": {"512": 0.045, "1K": 0.067, "2K": 0.101, "4K": 0.151},
+    "gemini-3-pro-image": {"1K": 0.134, "2K": 0.134, "4K": 0.24},
+    "gemini-3.1-flash-lite-image": {"1K": 0.0336},
 }
 
 
-def estimate_cost_usd(model: str, n_calls: int = 1) -> float:
+def estimate_cost_usd(model: str, n_calls: int = 1, image_size: str = "1K") -> float:
     """Best-effort per-call cost estimate for status-line UX."""
-    return _COST_PER_OUTPUT_USD.get(model, 0.04) * max(0, int(n_calls))
+    prices = _COST_PER_OUTPUT_USD.get(model)
+    unit = prices.get(image_size, prices["1K"]) if prices else 0.04
+    return unit * max(0, int(n_calls))
 
 
-def format_cost_suffix(model: str, n_calls: int = 1) -> str:
-    cost = estimate_cost_usd(model, n_calls)
+def format_cost_suffix(model: str, n_calls: int = 1, image_size: str = "1K") -> str:
+    cost = estimate_cost_usd(model, n_calls, image_size)
     if cost <= 0:
         return ""
     return f" | ~${cost:.3f}"
